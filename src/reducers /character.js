@@ -1,6 +1,7 @@
 import Immutable from 'seamless-immutable'
 import {
     SET_LIKES,
+    STATE_RESET
 } from '../types/character'
 
 
@@ -14,7 +15,9 @@ export default function character(state = defaultState, action ={}) {
         case SET_LIKES:
             return state.merge({
                 likes: action.payload,
-            })
+            });
+            case STATE_RESET:
+            return defaultState;
             default:
             return state
     }
