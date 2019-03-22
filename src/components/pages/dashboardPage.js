@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { increaseLikes } from '../../actions/character'
 import { decreaseLikes } from '../../actions/character'
+import { stateReset } from '../../actions/character'
 
 class Dashboard extends React.Component {
     state = { likes: 0 }
 
     render() {
-       
+
         return (
             <div>
                 <h1>Dashboard likes</h1>
@@ -20,11 +21,15 @@ class Dashboard extends React.Component {
                     label={{ basic: true, color: 'red', pointing: 'left', content: this.props.likes }}
                 />
                 <br />
-                <br/>
+                <br />
                 <Button onClick={this.props.decreaseLikes}
                     content='Like'
                     icon='minus'
-               
+                />
+                <br />
+                <br/>
+                <Button onClick={this.props.stateReset}
+                    content='State Reset'
                 />
                 <br />
                 <Link to="/detail">go to detail Page</Link>
@@ -39,7 +44,9 @@ const mapStateToProps = (state) => ({
     likes: state.character.likes
 })
 
-export default connect(mapStateToProps, 
-    { increaseLikes,
-        decreaseLikes 
+export default connect(mapStateToProps,
+    {
+        increaseLikes,
+        decreaseLikes,
+        stateReset
     })(Dashboard);

@@ -1,11 +1,16 @@
 import {
     SET_LIKES,
+    STATE_RESET 
 } from '../types/character'
 
 export const setLikes = payload => ({
     type: SET_LIKES,
     payload,
 })
+
+export const setDefaultState = () => ({
+    type: STATE_RESET  
+  });
 
 
 export const increaseLikes = () => (dispatch, getState) => {
@@ -22,3 +27,7 @@ export const decreaseLikes = () => (dispatch, getState) => {
         dispatch(setLikes(totalLikes))
     }
 }
+
+export const stateReset = () =>(dispatch) => {
+    dispatch(setDefaultState())
+};
