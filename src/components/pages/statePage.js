@@ -9,9 +9,13 @@ import { connect } from 'react-redux'
 class stateLocal extends React.Component {
     state = { likes: 0 }
 
-    render() {
-        const { likes } = this.state
+    addLike = () => {
+        this.setState({
+            likes: this.state.likes + 1
+        })
+    };
 
+    render() {
         return (
             <Segment>
                 <h1>Local state</h1>
@@ -19,12 +23,19 @@ class stateLocal extends React.Component {
                     color='red'
                     content='Like'
                     icon='heart'
-                    label={{ basic: true, color: 'red', pointing: 'left', content: likes }}
+                    label={{ basic: true, color: 'red', pointing: 'left', content: this.props.likes }}
                 />
+                <br/>
                 <Link to="/">Go to dashboard</Link>
             </Segment>
+            
+             );
+           
+                
+           
+            
 
-        );
+       
     }
 }
 
