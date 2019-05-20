@@ -3,6 +3,7 @@ import {Image, Table} from 'semantic-ui-react'
 
 
 const List = (props) =>(
+    
     <Table basic= 'very' celled collapsing>
     <Table.Header>
         <Table.Row>
@@ -12,13 +13,14 @@ const List = (props) =>(
         </Table.Row>
     </Table.Header>
 
-    <Table.Body>
+ 
 
+    <Table.Body>
         {props.characters.map(character =>(
            <Table.Row>
                <Table.Cell>{character.name}</Table.Cell>
                <Table.Cell>{character.description}</Table.Cell>
-               <Table.Cell><Image src={character.thumbnail} rounded size= 'small'/></Table.Cell>
+               <Table.Cell><Image src={character.description} rounded size= 'small'/></Table.Cell>
            </Table.Row>
 
         ))}

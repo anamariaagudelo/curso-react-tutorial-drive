@@ -10,11 +10,10 @@ import {
 const defaultState = Immutable({
   likes: 0,
   characters: [],
-  err: "",
+  error: "",
   fetching: false
 });
 
-debugger
 export default function character(state = defaultState, action = {}) {
   switch (action.type) {
     case SET_LIKES:
@@ -23,22 +22,22 @@ export default function character(state = defaultState, action = {}) {
       })
     case STATE_RESET:
       return defaultState;
-    case CHARACTERS_REQUEST:
-      return state.merge({
-        err: "",
-        fetching: true
-      })
-    case CHARACTERS_SUCCES:
-      return state.merge({
-        characters: action.payload.characters,
-        err:'',
-        fetching: false,
-      })
     case CHARACTERS_ERROR:
       return state.merge({
-        err: action.payload.err,
+        error: action.payload.err,
         fetching: true,
       });
+      case CHARACTERS_SUCCES:
+      return state.merge({
+        characters: action.payload.characters,
+        error:'',
+        fetching: false,
+      });
+      case CHARACTERS_REQUEST:
+      return state.merge({
+        error: "",
+        fetching: true
+      })
 
     default:
       return state;

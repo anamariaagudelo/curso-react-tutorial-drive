@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Dimmer, Loader } from "semantic-ui-react";
@@ -9,15 +8,16 @@ import { stateReset } from "../../actions/character";
 import List from '../common/list'
 
 class Dashboard extends React.Component {
-  state = { likes: 0 };
+  state = {};
+
   componentDidMount(){
       this.props.fetchCharacterSaga()
   }
 
   render() {
-      const {character} = this.props
+      const {character} = this.props;
 
-      if (character.fetching) {return (<Dimmer active><Loader>Loading...</Loader></Dimmer>)}
+      // if (character.fetching) {return (<Dimmer active><Loader>Loading...</Loader></Dimmer>)}
     return (
       <div>
         {/* <h1>Dashboard likes</h1>
